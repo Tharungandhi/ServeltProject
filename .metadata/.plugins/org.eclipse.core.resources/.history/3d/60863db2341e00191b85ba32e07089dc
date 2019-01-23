@@ -1,0 +1,39 @@
+package com.bridgebabz.servletprograms;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class LoginPage extends HttpServlet{
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserInformation userInform=new UserInformation();
+		userInform.setEmailId(req.getParameter("emailid"));
+		userInform.setPassword(req.getParameter("password"));
+		display(userInform);
+		
+		
+		
+		
+		
+		String un=req.getParameter("emailid");
+		String pw=req.getParameter("password");
+		
+		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
+		RequestDispatcher dis= req.getRequestDispatcher("/registration.html");
+		dis.forward(req, resp);
+		resp.setContentType(pw);
+	}
+
+	public void display( UserInformation userInform)
+	{
+		System.out.println("Mobile No  :" + userInform.getEmailId());
+		System.out.println("Password   :" + userInform.getPassword());
+	}
+}

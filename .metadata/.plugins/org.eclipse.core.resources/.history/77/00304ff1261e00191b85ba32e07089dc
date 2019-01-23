@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body>
+<form action="login" method="post">
+
+<fieldset>
+<legend>Welcome To Login Page</legend>
+<label>EmailID:</label>
+<input type="text" name="emailid" value="" required/> </div>
+<div>
+<div>
+<label>Password</label>
+<input type="password" name="password" value="" required/>
+</div>
+<input type="submit" name="submit"/>
+<a href=registration.html/> Click here for new user </a>
+</fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+package com.bridgebabz.servletprograms;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class RegistrationPage extends HttpServlet{
+
+	List<UserInformation> userList=new ArrayList<UserInformation>();
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserInformation userInform=new UserInformation();
+		userInform.setFirstname(req.getParameter("firstname"));
+		userInform.setLastName(req.getParameter("lastname"));
+		userInform.setEmailId(req.getParameter("emailid"));
+		userInform.setPassword(req.getParameter("password"));
+		userInform.setMobileNo(req.getParameter("phonenumber"));
+		userInform.setGender(req.getParameter("gender"));
+		userList.add(userInform);
+		System.out.println(userList);
+		PrintWriter out=resp.getWriter();
+		out.println("<html>\n" + 
+				"<head>\n" + 
+				"<meta charset=\"UTF-8\">\n" + 
+				"<title>Insert title here</title>\n" + 
+				"</head>\n" + 
+				"<body>\n" + 
+				"<form action=\"login\" method=\"post\">\n" + 
+				"<div>\n" + 
+				"<label>FirstName:</label>\n" + 
+				"<input type=\"text\" name=\"firstname\" value=\"\" required/> </div>\n" + 
+				"<div>\n" + 
+				"<label>LastName:</label>\n" + 
+				"<input type=\"text\" name=\"lastname\" value=\"\" required/> </div>\n" + 
+				"<div>\n" + 
+				"<label>EmailID:</label>\n" + 
+				"<input type=\"text\" name=\"emailid\" value=\"\" required/> </div>\n" + 
+				"<div>\n" + 
+				"<div>\n" + 
+				"<label>Password</label>\n" + 
+				"<input type=\"password\" name=\"password\" value=\"\" required/>\n" + 
+				"</div>\n" + 
+				"<label>PhoneNumber:</label>\n" + 
+				"<input type=\"text\" name=\"phonenumber\" value=\"\" required/> </div>\n" + 
+				"<div>\n" + 
+				"<label>GENDER:</label>\n" + 
+				"<label>Male</label>\n" + 
+				"<input type=\"radio\" name=\"gender\" value=\"male\" required/>\n" + 
+				"<label>Female</label>\n" + 
+				"<input type=\"radio\" name=\"gender\" value=\"female\" required/>\n" + 
+				"<label>Other</label>\n" + 
+				"<input type=\"radio\" name=\"gender\" value=\"other\" required/>\n" + 
+				"</div>\n" + 
+				"<input type=\"submit\" name=\"submit\"/>\n" + 
+				"</form>\n" + 
+				"</body>\n" + 
+				"</html>");
+		out.close();
+		display(userInform);
+	}
+		public void display( UserInformation userInform)
+		{
+			System.out.println("First Name :" +userInform.getFirstname());
+			System.out.println("Last Name  :" + userInform.getLastName());
+			System.out.println("Email ID   :" + userInform.getEmailId());
+			System.out.println("Mobile No  :" + userInform.getMobileNo());
+			System.out.println("Password   :" + userInform.getPassword());
+			System.out.println("Gender     :" + userInform.getGender());
+		}
+//		
+//		String fname=req.getParameter("firstname");
+//		System.out.println(fname);
+//		String lname=req.getParameter("lastname");
+//		System.out.println(lname);
+//		String emailid=req.getParameter("emailid");
+//		System.out.println(emailid);
+//		String pswd=req.getParameter("password");
+//		System.out.println(pswd);
+//		String pno=req.getParameter("phonenumber");
+//		System.out.println(pno);
+//		String gen=req.getParameter("gender");
+//		System.out.println(gen);
+	}
+

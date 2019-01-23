@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+</head>
+<body>
+<form action="Register" method="post">
+
+<fieldset>
+<legend>Person Information</legend>
+<center>
+<div>
+<label>FirstName:</label>
+<input type="text" name="firstname"  placeholder="enter firstname" value="" required/> </div>
+<div>
+<label>LastName:</label>
+<input type="text" name="lastname"  placeholder="enter lastname" value="" required/> </div>
+<div>
+<label>EmailID:</label>
+<input type="text" name="emailid"  placeholder="enter emailid" value="" required/> </div>
+<div>
+<div>
+<label>Password</label>
+<input type="password" name="password" placeholder="enter password"        value="" required/>
+</div>
+<label>PhoneNumber:</label>
+<input type="text" name="phonenumber"  placeholder="enter phonenumber"  value="" required/> </div>
+<div>
+<label>GENDER:</label>
+<label>Male</label>
+<input type="radio" name="gender" value="male" required/>
+<label>Female</label>
+<input type="radio" name="gender" value="female" required/>
+<label>Other</label>
+<input type="radio" name="gender" value="other" required/>
+</div>
+<input type="submit" name="submit"/>
+<div>
+<a href=login.html> Click here for old user </a></div>
+</center>
+</fieldset>
+</form>
+</body>
+</html>

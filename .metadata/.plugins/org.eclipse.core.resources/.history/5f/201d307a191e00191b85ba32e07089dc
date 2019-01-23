@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="login" method="post">
+<div>
+<fieldset>
+<legend>Person Information</legend>
+<label>FirstName:</label>
+<input type="text" name="firstname" value="" required/> </div>
+<div>
+<label>LastName:</label>
+<input type="text" name="lastname" value="" required/> </div>
+<div>
+<label>EmailID:</label>
+<input type="text" name="emailid" value="" required/> </div>
+<div>
+<div>
+<label>Password</label>
+<input type="password" name="password" value="" required/>
+</div>
+<label>PhoneNumber:</label>
+<input type="text" name="phonenumber" value="" required/> </div>
+<div>
+<label>GENDER:</label>
+<label>Male</label>
+<input type="radio" name="gender" value="male" required/>
+<label>Female</label>
+<input type="radio" name="gender" value="female" required/>
+<label>Other</label>
+<input type="radio" name="gender" value="other" required/>
+</div>
+<input type="submit" name="submit"/>
+
+</form>
+</fieldset>
+</body>
+</html>

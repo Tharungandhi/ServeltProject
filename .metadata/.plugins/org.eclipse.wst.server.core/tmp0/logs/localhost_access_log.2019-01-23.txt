@@ -1,0 +1,16 @@
+127.0.0.1 - - [23/Jan/2019:10:07:50 +0530] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [23/Jan/2019:10:07:51 +0530] "GET /LginRegistrationApp/login.html HTTP/1.1" 404 1108
+127.0.0.1 - - [23/Jan/2019:10:08:03 +0530] "GET /LginRegistrationApp/login.html HTTP/1.1" 404 1108
+127.0.0.1 - - [23/Jan/2019:10:09:25 +0530] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [23/Jan/2019:10:09:25 +0530] "GET /LginRegistrationApp/login.html HTTP/1.1" 200 585
+127.0.0.1 - - [23/Jan/2019:10:09:42 +0530] "POST /LginRegistrationApp/login HTTP/1.1" 200 1230
+127.0.0.1 - - [23/Jan/2019:10:10:06 +0530] "POST /LginRegistrationApp/Register HTTP/1.1" 200 585
+127.0.0.1 - - [23/Jan/2019:10:11:41 +0530] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [23/Jan/2019:10:11:41 +0530] "GET /LginRegistrationApp/logout.html HTTP/1.1" 200 188
+127.0.0.1 - - [23/Jan/2019:10:13:06 +0530] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [23/Jan/2019:10:13:06 +0530] "GET /LginRegistrationApp/logout.html HTTP/1.1" 200 219
+127.0.0.1 - - [23/Jan/2019:10:14:20 +0530] "GET /LginRegistrationApp/logout.html HTTP/1.1" 200 248
+127.0.0.1 - - [23/Jan/2019:10:14:22 +0530] "POST /LginRegistrationApp/logout HTTP/1.1" 405 1117
+127.0.0.1 - - [23/Jan/2019:10:15:17 +0530] "GET /LginRegistrationApp/logout.html HTTP/1.1" 200 243
+127.0.0.1 - - [23/Jan/2019:10:15:20 +0530] "POST /LginRegistrationApp/logout HTTP/1.1" 405 1117
+127.0.0.1 - - [23/Jan/2019:10:15:22 +0530] "GET /LginRegistrationApp/login.html HTTP/1.1" 304 -

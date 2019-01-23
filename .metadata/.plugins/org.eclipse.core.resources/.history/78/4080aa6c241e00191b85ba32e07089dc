@@ -1,0 +1,16 @@
+package com.bridgebabz.servletprograms;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Registration1Page {
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserInformation userInform=new UserInformation();
+		userInform.setEmailId(req.getParameter("emailid"));
+		userInform.setPassword(req.getParameter("password"));
+}
+}
