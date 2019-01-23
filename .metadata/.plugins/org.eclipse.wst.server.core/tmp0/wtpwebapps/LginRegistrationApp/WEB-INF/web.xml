@@ -28,12 +28,12 @@
   </servlet>
   
    <servlet-mapping>
-  <servlet-name>logoutservlet</servlet-name>
-  <url-pattern>/logout</url-pattern>
+  <servlet-name>welcomeservlet</servlet-name>
+  <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
   <servlet>
-  <servlet-name>logoutservlet</servlet-name>
-  <servlet-class>com.bridgebabz.servletprograms.LogoutPage</servlet-class>
+  <servlet-name>welcomeservlet</servlet-name>
+  <servlet-class>com.bridgebabz.servletprograms.WelcomePage</servlet-class>
   </servlet>
   
 </web-app>

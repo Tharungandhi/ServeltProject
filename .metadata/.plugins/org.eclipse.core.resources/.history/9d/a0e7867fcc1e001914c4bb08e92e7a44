@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>logout</title>
+</head>
+<body>
+<form action="logout" method="post">
+WELCOME TO HOME PAGE
+<div> 
+<input type="submit" value="logout" /> </div>
+</form>
+</body>
+</html>
