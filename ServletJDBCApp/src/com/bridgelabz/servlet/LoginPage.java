@@ -20,7 +20,9 @@ public class LoginPage extends HttpServlet{
 		String email=req.getParameter("emailid");
 		String pw=req.getParameter("password");
 		PrintWriter out=resp.getWriter();
-        out.write("<b> Welcome <b>");
+    	userInform.setEmailId(req.getParameter("emailid"));
+		userInform.setPassword(req.getParameter("password"));
+		display(userInform);
         
 //		if((RegistrationPage.userList.size()!=0)){
 //		for(UserInformation u:RegistrationPage.userList) 
@@ -37,13 +39,11 @@ public class LoginPage extends HttpServlet{
 //		        out.close();
 //		}
 //		else {
-			userInform.setEmailId(req.getParameter("emailid"));
-			userInform.setPassword(req.getParameter("password"));
-			display(userInform);
+		
 		try {
 			UserInformation user=UserDataBase.reteriew(userInform);
 			if(user!=null) {
-				out.print(" To Login Page");
+				out.print("<b> To Login Page<b>");
 				RequestDispatcher dis1= req.getRequestDispatcher("/welcome.html");
 				req.setAttribute("userInform", user);
 				dis1.forward(req, resp);

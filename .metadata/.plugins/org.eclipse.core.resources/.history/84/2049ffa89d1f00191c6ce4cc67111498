@@ -1,0 +1,48 @@
+package com.bridgelabz.filter;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FilterValidation implements Filter{
+	    static final String REGEX_EMAIL_ID = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
+	  static final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+	    static final String REGEX_CONTACT = "^[0-9]{10}$";
+  
+	    @Override
+	    public void init(FilterConfig arg0) throws ServletException {}
+
+	    @Override
+	    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chainObj)  throws IOException, ServletException {
+	    	PrintWriter out= res.getWriter();
+	    	RequestDispatcher requestDispatcher = null;
+	        HttpServletResponse response = (HttpServletResponse) res;
+	        HttpServletRequest request = (HttpServletRequest) req;
+	        String emailid = request.getParameter("emailid");
+	        String password = request.getParameter("password");
+	        String contact = request.getParameter("phonenumber");
+	        if ( (contact.matches(REGEX_CONTACT))) {
+	            chainObj.doFilter(request, response);
+	            out.print("<p><b>Details are present login pls<b><p> ");
+	            requestDispatcher = request.getRequestDispatcher("/login.html");
+	            requestDispatcher.forward(request, response);
+	        } else {
+	        	out.print("<p><b> Pls Enter the details correctly<p><b>");
+	            requestDispatcher = request.getRequestDispatcher("/registration.html");
+	            requestDispatcher.include(request, response);
+	        }
+	    }
+	  //  emailid.matches(REGEX_EMAIL_ID) && (password.matches(password)) &&
+	    @Override
+	    public void destroy()  {}
+
+}

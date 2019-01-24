@@ -36,4 +36,13 @@
   <servlet-class>com.bridgelabz.servlet.WelcomePage</servlet-class>
   </servlet>
   
+  
+   <filter-mapping>
+  <filter-name>filterservlet</filter-name>
+  <url-pattern>/register</url-pattern>
+  </filter-mapping>
+  <filter>
+  <filter-name>filterservlet</filter-name>
+  <filter-class>com.bridgelabz.filter.FilterValidation</filter-class>
+  </filter>
 </web-app>

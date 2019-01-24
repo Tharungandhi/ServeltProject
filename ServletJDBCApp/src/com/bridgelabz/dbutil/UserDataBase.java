@@ -11,8 +11,7 @@ import com.bridgelabz.servlet.RegistrationPage;
   
 public class UserDataBase {
 	  
-	 public static Connection getMySQLConnection()
-	         throws ClassNotFoundException, SQLException {
+	 public static Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
 	     String hostName = "localhost";
 	     String dbName = "ServletProject";
 	     String userName = "root";
@@ -62,7 +61,7 @@ public class UserDataBase {
 	          }
 		 rset.close();
 	          preparedStmt.close();
-	          conn.close();
+	       //   conn.close();
 	          return userinform;
 	 }
 }
