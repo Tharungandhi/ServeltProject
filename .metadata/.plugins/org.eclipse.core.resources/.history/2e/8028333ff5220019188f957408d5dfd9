@@ -1,0 +1,50 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="com.mysql.jdbc.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dynamic registration</title>
+</head>
+<body>
+<%!
+public static Connection getMySQLConnection(){
+    String hostName = "localhost";
+    String dbName = "ServletProject";
+    String userName = "root";
+    String password = "password";
+    return getMySQLConnection(hostName, dbName, userName, password);
+}
+ 
+public static Connection getMySQLConnection(String hostName, String dbName,
+        String userName, String password)  {
+   
+    Class.forName("com.mysql.jdbc.Driver");
+    String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
+    Connection conn = DriverManager.getConnection(connectionURL, userName,
+            password);
+    return conn;
+}
+
+%>
+
+
+
+
+<form action="./reg.jsp"></form>
+<pre>
+ID: <input type="text" name="id"/>
+Name: <input type="text" name="id"/>
+Email: <input type="text" name="id"/>
+Qual:<select> name="quali"
+
+</select>
+
+</pre>
+
+
+
+</body>
+</html>

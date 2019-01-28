@@ -5,20 +5,30 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class WelcomePage extends HttpServlet{
 
 	@SuppressWarnings("unused")
-	private void dopst(HttpServletRequest req, HttpServletResponse resp ) throws IOException, ServletException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp ) throws IOException, ServletException {
 		PrintWriter out=resp.getWriter();
 		out.print("<b> Succesfully logged out </b>");
-		req.getSession().invalidate();
-//	    resp.sendRedirect(req.getContextPath() + "/login.html");
-		RequestDispatcher dis= req.getRequestDispatcher("/login.html");
-		dis.forward(req, resp);
-
+		//req.getSession().invalidate();
+	    //resp.sendRedirect(req.getContextPath() + "/login.html");
+	    Cookie ck[]=req.getCookies();  
+        out.print("Hello "+ck[0].getValue());  
+//		RequestDispatcher dis= req.getRequestDispatcher("/login.html");
+//		dis.forward(req, resp);
+		//invalidate the session if exists
+    	HttpSession session = req.getSession(false);
+    	System.out.println("User="+session.getAttribute("user"));
+    	if(session != null){
+    		session.invalidate();
+    	}
+    	resp.sendRedirect("login.html");
 	}
 }
