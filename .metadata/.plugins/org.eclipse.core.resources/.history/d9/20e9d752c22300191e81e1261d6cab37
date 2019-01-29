@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="com.bridgelabz.model.UserInformation" %>
+<!DOCTYPE html>
+<html>
+<head>
+<style >
+
+input { 
+    width: 100%; 
+    margin-bottom: 10px; 
+    background: rgba(0,0,0,0.3);
+    border: medium;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    transition: box-shadow .5s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>User Details</title>
+</head>
+<body><% 
+UserInformation userinform=(UserInformation)session.getAttribute("UserInformation");
+%>
+<h3> User Details </h3>
+<div>
+<b>FirstName=</b><%=userinform.getFirstname()%>
+</div>
+<div>
+<br>
+<b>LastName=</b><%=userinform.getLastName() %><br></div>
+<div>
+<br>
+<b>EmailID=</b><%=userinform.getEmailId() %><br></div>
+<div>
+<br>
+<b>Password=</b><%=userinform.getPassword()%><br></div>
+<div>
+<br>
+<b>MobileNo=</b><%=userinform.getMobileNo() %><br></div>
+
+<div>
+<br>
+<b>Gender=</b><%=userinform.getGender() %><br></div>
+
+ <form action="<%=response.encodeURL("edit.jsp") %>" method="post">
+<input type="submit"  value="edit" > 
+</form> 
+<!-- <a href="edit.jsp">Edit Details</a> -->
+</body>
+</html>

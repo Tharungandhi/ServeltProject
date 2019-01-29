@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="com.bridgelabz.model.UserInformation" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit Page</title>
+</head>
+<body>
+<%
+UserInformation userinform=(UserInformation)session.getAttribute("UserInformation");
+String EmailId = null;
+String sessionID = null;
+if(session.getAttribute("UserInformation") == null){
+	response.sendRedirect("login.html");
+}else 
+	EmailId = (String) session.getAttribute("UserInformation");
+
+
+
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("emailid")) email = cookie.getValue();
+}
+%>
+<form action="edit" method="post">
+<fieldset>
+<legend>Welcome To Edit Page</legend>
+<div align="center">
+<label>FirstName:</label>
+<input type="text" name="firstname"  placeholder="<%=userinform.getFirstname()%>" value=""  /> </div>
+<div>
+<label>LastName:</label>
+<input type="text" name="lastname"  placeholder="<%=userinform.getLastName() %>" value=""  /> </div>
+<div>
+<label>EmailID:</label>
+<%=userinform.getEmailId() %>
+</div>
+<div>
+<div>
+<label>Password:</label>
+&nbsp;<input type="password" name="password" placeholder="<%=userinform.getPassword() %>"  value=""  />
+</div>
+<label>PhoneNumber:</label>
+&nbsp;<input type="text" name="phonenumber"  placeholder="<%=userinform.getMobileNo() %>"  value=""  /> </div>
+<div>
+&nbsp;<label>GENDER:</label>
+<label>Male</label>
+<input type="radio" name="gender" value="male"  placeholder="<%=userinform.getGender() %>"  />
+<label>Female</label>
+<input type="radio" name="gender" value="female" placeholder="<%=userinform.getGender() %>" />
+<label>Other</label>
+<input type="radio" name="gender" value="other" placeholder="<%=userinform.getGender() %>" />
+</div>
+<input type="submit" name="submit"/>
+<div>
+
+</div>
+</fieldset>
+</form>
+</body>
+</html>

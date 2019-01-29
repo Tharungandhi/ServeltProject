@@ -1,0 +1,31 @@
+package com.bridgelabz.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bridgelabz.dbutil.UserDataBase;
+
+public class EditPage extends HttpServlet {
+ @Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	 try {
+		PreparedStatement  details = UserDataBase.edit();
+		RequestDispatcher re1=req.getRequestDispatcher("edit.jsp");
+		re1.include(req, resp);
+		
+		
+		
+		
+	} catch (ClassNotFoundException | SQLException e) {
+		e.printStackTrace();
+	}	
+}
+}

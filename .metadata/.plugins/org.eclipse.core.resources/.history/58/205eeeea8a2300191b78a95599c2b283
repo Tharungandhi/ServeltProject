@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="com.bridgelabz.model.UserInformation" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>User Details</title>
+</head>
+<body><% 
+UserInformation userinform=(UserInformation)session.getAttribute("UserInformation");
+%>
+<h3> User Details </h3>
+<div>
+FirstName=<%=userinform.getFirstname()%>
+</div>
+<div>
+<br>
+LastName=<%=userinform.getLastName() %><br></div>
+<div>
+<br>
+EmailID=<%=userinform.getEmailId() %><br></div>
+<div>
+<br>
+Password=<%=userinform.getPassword()%><br></div>
+<div>
+<br>
+MobileNo=<%=userinform.getMobileNo() %><br></div>
+
+<div>
+<br>
+Gender=<%=userinform.getGender() %><br></div>
+
+</body>
+</html>

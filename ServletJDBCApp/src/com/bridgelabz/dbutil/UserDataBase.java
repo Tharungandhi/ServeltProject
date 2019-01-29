@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
+
 import com.bridgelabz.model.UserInformation;
 import com.bridgelabz.servlet.RegistrationPage;
   
@@ -58,11 +60,44 @@ public class UserDataBase {
     	 ResultSet rset = preparedStmt.executeQuery();
 		 while(rset.next()){
 			 userinform=new UserInformation();
-	          }
-		 rset.close();
+			 userinform.setFirstname(rset.getString(2));	
+			 userinform.setLastName(rset.getString(3));
+			 userinform.setEmailId(rset.getString(4));
+			 userinform.setPassword(rset.getString(5));
+			 userinform.setMobileNo(rset.getString(6));
+			 userinform.setGender(rset.getString(7));
+			 }
+		      rset.close();
 	          preparedStmt.close();
-	       //   conn.close();
+	          conn.close();
 	          return userinform;
 	 }
+	
+	 
+	 public static void edit( UserInformation  userinform) throws SQLException, ClassNotFoundException
+	 {   
+		 String sql1="update USERINFORMATION set firstname=?,lastname=?,password=?,phoneno=?,gender=? where email_id=?";
+		 Connection conn=getMySQLConnection();
+		 PreparedStatement updateUserInfo = (PreparedStatement) conn.prepareStatement(sql1);
+//		 ResultSet rs=updateUserInfo.executeQuery();
+//		 while(rs.next())
+//		 {
+         updateUserInfo.setString(1, userinform.getFirstname());
+         updateUserInfo.setString(2, userinform.getLastName());
+         updateUserInfo.setString(3, userinform.getPassword());
+         updateUserInfo.setString(4, userinform.getMobileNo());
+         updateUserInfo.setString(5, userinform.getGender());
+         updateUserInfo.setString(6,  userinform.getEmailId());
+         updateUserInfo.executeUpdate();
+//	 }
+//		 rs.close();
+		 updateUserInfo.close();
+	     conn.close();
+//	     return updateUserInfo;
+	 
+	 }
+	 
+
 }
+	 
 

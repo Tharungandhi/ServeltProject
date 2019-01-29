@@ -1,37 +1,101 @@
+<%@page import="com.bridgelabz.model.UserInformation"%>
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
+	pageEncoding="US-ASCII"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style >
+
+input { 
+    width: 100%; 
+    margin-bottom: 10px; 
+    background: rgba(0,0,0,0.3);
+    border: medium;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    transition: box-shadow .5s ease;
+}
+.login { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    width:300px;
+    height:300px;
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+body {
+  background: #2f313d;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Login Success Page</title>
 </head>
 <body>
-<%
-//allow access only if session exists
-String user = null;
-if(session.getAttribute("emailid") == null){
-	response.sendRedirect("login.html");
-}else user = (String) session.getAttribute("emailid");
-String email = null;
-String sessionID = null;
-Cookie[] cookies = request.getCookies();
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("emailid")) email = cookie.getValue();
-	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-}
-}else{
-	sessionID = session.getId();
-}
-%>
-<h3>Hi <%=email %>, Login successful. Your Session ID=<%=sessionID %></h3>
-<br>
-User=<%=user %>
-<br>
-<a href="<%=response.encodeURL("cookie.jsp") %>">Checkout Page</a>
-<form action="<%=response.encodeURL("WelcomePage") %>" method="post">
-<input type="submit" value="Logout" >
-</form>
+	<%
+		UserInformation user = new UserInformation();
+		if (session.getAttribute("UserInformation") == null) {
+			response.sendRedirect("login.html");
+		} else
+			user = (UserInformation) session.getAttribute("UserInformation");
+		String email = null;
+		String sessionID = null;
+
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("UserInformation"))
+					email = cookie.getValue();
+				if (cookie.getName().equals("JSESSIONID"))
+					sessionID = cookie.getValue();
+			}
+		} else {
+			sessionID = session.getId();
+		}
+	%>
+	<div class="login">
+	<div><h3><%=user.getEmailId() %> successfully logged in </h3></div>
+	<div><h3>Your Session ID=<%=sessionID%></h3></div>
+	<%-- <a href="<%=response.encodeURL("Checkout.jsp")%>">Check the
+		Details </a> --%>
+
+ <form action="<%=response.encodeURL("Checkout.jsp") %>" method="post">
+<input type="submit"  value="Details" >
+</form> 
+
+	<form action="login" method="post">
+		<input type="submit" value="Logout">
+	</form>
+	</div>
 </body>
 </html>

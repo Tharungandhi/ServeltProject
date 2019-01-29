@@ -1,0 +1,43 @@
+package com.bridgelabz.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bridgelabz.dbutil.UserDataBase;
+
+public class EditPage extends HttpServlet {
+ @Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	 try {
+		 String sql1="update USERINFORMATION set FirstName=?,LastName=?,Password=?,MobileNo=?,Gender=? where EmailId=?";
+		 Connection conn=UserDataBase.getMySQLConnection();
+		 PreparedStatement updateUserInfo = (PreparedStatement) conn.prepareStatement(sql1);
+		 ResultSet rs=updateUserInfo.executeQuery();
+		 while(rs.next())
+		 {
+         updateUserInfo.setString(1, "FirstName");
+         updateUserInfo.setString(2, "LastName");
+         updateUserInfo.setString(3, "Password");
+         updateUserInfo.setString(4, "MobileNo");
+         updateUserInfo.setString(5, "Gender");
+         updateUserInfo.executeUpdate();
+	 }
+		 rs.close();
+		 updateUserInfo.close();
+	     conn.close();
+		RequestDispatcher re1=req.getRequestDispatcher("edit.jsp");
+		re1.include(req, resp);	
+	} catch (ClassNotFoundException | SQLException e) {
+		e.printStackTrace();
+	}	
+}
+}

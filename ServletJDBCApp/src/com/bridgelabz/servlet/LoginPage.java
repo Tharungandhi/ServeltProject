@@ -46,17 +46,19 @@ public class LoginPage extends HttpServlet{
 //		else {
 		
 		try {
-			UserInformation user=UserDataBase.reteriew(userInform);
-			
+			UserInformation user=UserDataBase.reteriew(userInform);	
+			System.out.println(user);
 			if(user!=null) {
-				
-				 Cookie email1=new Cookie("emailid",request.getParameter("emailid"));
-				 email1.setMaxAge(60);
+				 Cookie email1=new Cookie("emailid",user.getEmailId());
+				 email1.setMaxAge(10);
 				 response.addCookie(email1);
 				 HttpSession session=request.getSession();
-				 session.setAttribute("emailid", request.getParameter("emailid"));
-				 session.setMaxInactiveInterval(30*60);
+				 session.setAttribute("UserInformation", user);
+				 session.setMaxInactiveInterval(10);
 				 response.sendRedirect("session.jsp");
+//				 RequestDispatcher dis1= request.getRequestDispatcher("session.jsp");
+//				 dis1.forward(request, response);
+			//	request.setAttribute("userInform", user);
 //				   out.print("cookies"+ email1);
 //				out.print("<p><b> To Login Page<b></p>");
 //				RequestDispatcher dis1= request.getRequestDispatcher("/welcome.html");
@@ -65,9 +67,11 @@ public class LoginPage extends HttpServlet{
 				
 				}
 			else {
-				out.print("<p><b>Details not present<b></p>"); 
+				out.print("<p><b> Pls Enter the details <b></p>"); 
 			 RequestDispatcher dis2= request.getRequestDispatcher("/login.html");
-			 dis2.include(request, response);}
+			 dis2.include(request, response);	 
+			 }
+			
 			}
 			catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();}

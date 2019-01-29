@@ -1,0 +1,44 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style body {background-color: blue;}></style>
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body>
+ background-color: blue;
+<form action="login" method="post">
+
+<fieldset>
+<legend> Login Page</legend>
+<div align="center">
+<div>
+<label>Email-ID:</label>
+&nbsp;<input type="email" name="emailid"  placeholder="enter emailid" value="" required/> </div>
+<div>
+<label>Password:</label>
+<input type="password" name="password"  placeholder="enter password" value="" required/> </div>
+<input style='color: green' type="submit" name="submit"/>
+<div>
+<a href=registration.html> Register now </a> </div>
+</div>
+</fieldset>
+</form>
+</body>
+</html>

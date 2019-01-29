@@ -1,0 +1,20 @@
+package com.bridgelabz.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class EditPage extends HttpServlet {
+ @Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	 String sql = "SELECT * FROM USERINFORMATION Where email_id=? && password=?";
+	// Connection conn=getMySQLConnection();
+	// PreparedStatement preparedStmt = conn.prepareStatement(sql);
+	
+}
+}
